@@ -3,5 +3,4 @@
 -r ./base.txt
 
 gunicorn==20.0.4
-psycopg2==2.8.4 --no-binary psycopg2
 sentry-sdk==0.14.0
