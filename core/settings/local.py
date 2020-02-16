@@ -24,10 +24,6 @@ CACHES = {
 }
 
 
-# Override static dirs locally because pycharm does not load "str(APPS_DIR.path("static"))" path build
-# Without this, pycharm "go to" shortcut will not work for statics since pycharm relies on this config
-STATICFILES_DIRS = ("static", )
-
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#prerequisites
