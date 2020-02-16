@@ -1,5 +1,9 @@
-python-docker-nginx
-===================
+*Special thanks:*
+
+Nginx-le creator: https://github.com/umputun/nginx-le
+
+Django Cookiecutter creators: https://github.com/pydanny/cookiecutter-django
+
 
 Checklist
 ---------
