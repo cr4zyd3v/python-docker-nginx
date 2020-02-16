@@ -1,0 +1,9 @@
+TZ=America/Chicago
+LETSENCRYPT=false
+LE_EMAIL=base@mail.com
+LE_FQDN=example.com,www.example.com
+
+# - Manual certs location
+#- SSL_CERT=le-crt.pem
+#- SSL_KEY=le-key.pem
+#- SSL_CHAIN_CERT=le-chain-crt.pem

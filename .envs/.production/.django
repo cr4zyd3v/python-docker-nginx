@@ -1,0 +1,42 @@
+# General
+# ------------------------------------------------------------------------------
+DJANGO_SETTINGS_MODULE=core.settings.production
+WSGI_FILE=core.wsgi
+DJANGO_SECRET_KEY=
+DJANGO_ADMIN_URL=
+DJANGO_ALLOWED_HOSTS=
+
+# Security
+# ------------------------------------------------------------------------------
+# TIP: better off using DNS, however, redirect is OK too
+DJANGO_SECURE_SSL_REDIRECT=False
+
+# Gunicorn
+# ------------------------------------------------------------------------------
+WEB_CONCURRENCY=4
+
+# Sentry
+# ------------------------------------------------------------------------------
+SENTRY_DSN=
+
+
+# Redis
+# ------------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+
+# Celery
+# ------------------------------------------------------------------------------
+# CELERY_BROKER_URL=redis://localhost:6379/0
+# Flower
+# CELERY_FLOWER_USER=
+# CELERY_FLOWER_PASSWORD=
+
+# Email
+# ------------------------------------------------------------------------------
+DJANGO_DEFAULT_FROM_EMAIL=
+DJANGO_SERVER_EMAIL=
+EMAIL_USE_TLS=True
+EMAIL_HOST=
+EMAIL_PORT=587
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=

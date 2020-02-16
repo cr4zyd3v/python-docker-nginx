@@ -1,0 +1,67 @@
+version: '3'
+
+volumes:
+  production_postgres_data: {}
+  production_postgres_data_backups: {}
+  production_nginx_certs: {}
+  static-volume: {}
+  media-volume: {}
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/production/django/Dockerfile
+    image: production_django
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - ./.envs/.production/.django
+      - ./.envs/.production/.postgres
+    command: /start
+    volumes:
+      - static-volume:/app/staticfiles
+      - media-volume:/app/media
+    expose:
+      - 8000
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: production_postgres
+    volumes:
+      - production_postgres_data:/var/lib/postgresql/data
+      - production_postgres_data_backups:/backups
+    env_file:
+      - ./.envs/.production/.postgres
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./compose/production/nginx/Dockerfile
+    image: production_nginx
+    hostname: nginx
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+    volumes:
+      - production_nginx_certs:/etc/nginx/ssl
+      - static-volume:/app/staticfiles
+      - media-volume:/app/media
+    depends_on:
+      - django
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - ./.envs/.production/.nginx
+
+  redis:
+    image: redis:5.0
+
+
